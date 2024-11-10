@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Welcome to my Hacker Page
+title: Intro
 ---
 
 # Yo Bro!!!
