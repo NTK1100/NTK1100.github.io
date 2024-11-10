@@ -3,5 +3,7 @@ layout: default
 title: Welcome to my Hacker Page
 ---
 
-# Hello, world!
-Chào mừng bạn đến với trang cá nhân phong cách hacker của tôi!
+# Yo Bro!!!
+## I'm NTK1100
+### Nice to meed you <3
+Just from Viet Nam and interesting CTF/RE
