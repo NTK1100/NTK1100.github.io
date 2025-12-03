@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Orbitron:wght@500;900&display=swap');
+
+:root {
+    --bg-color: #050505;
+    --text-color: #e0e0e0;
+    --neon-green: #0aff0a; /* Màu Hacker */
+    --neon-purple: #bd00ff; /* Màu Hip-hop */
+    --glass-bg: rgba(20, 20, 20, 0.8);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Fira Code', monospace; /* Font code */
+    margin: 0;
+    padding: 0;
+    /* Hiệu ứng nền lưới */
+    background-image: linear-gradient(rgba(0, 255, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 0, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+/* --- Container chính --- */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* --- Menu điều hướng (Navigation) --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 2px solid var(--neon-purple);
+    margin-bottom: 40px;
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    color: var(--neon-green);
+    text-shadow: 0 0 10px var(--neon-green);
+    font-weight: bold;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 1.1rem;
+    transition: 0.3s;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--neon-purple);
+    text-shadow: 0 0 8px var(--neon-purple);
+    border-bottom: 1px solid var(--neon-purple);
+}
+
+/* --- Spotify Custom --- */
+.spotify-box {
+    margin-top: 30px;
+    border: 1px solid var(--neon-purple);
+    box-shadow: 0 0 15px rgba(189, 0, 255, 0.3);
+    border-radius: 12px;
+    overflow: hidden;
+}
+/* Đảo màu Spotify cho hợp dark mode */
+.spotify-box iframe {
+    filter: invert(90%) hue-rotate(180deg) contrast(1.2);
+    opacity: 0.9;
+    display: block; /* fix khoảng trắng thừa */
+}
+
+/* --- Archive List (Style đĩa nhạc cho Notion) --- */
+.track-list {
+    list-style: none;
+    padding: 0;
+}
+
+.track-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px dashed #333;
+    transition: 0.3s;
+}
+
+.track-item:hover {
+    background: rgba(10, 255, 10, 0.1); /* Hover màu xanh hacker */
+    padding-left: 25px; /* Hiệu ứng trượt sang phải */
+    cursor: pointer;
+}
+
+.track-title {
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+.track-tag {
+    font-size: 0.8rem;
+    background: var(--neon-purple);
+    color: #000;
+    padding: 2px 8px;
+    border-radius: 4px;
+}

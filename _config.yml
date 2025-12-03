@@ -1,1 +1,5 @@
-theme: jekyll-theme-hacker
+title: NTK1100 Portfolio
+description: Cyberpunk & Cybersecurity Playground
+theme: null # Chúng ta tự code theme, không dùng theme có sẵn
+baseurl: "" 
+url: "https://ntk1100.github.io"
