@@ -1,60 +1,25 @@
-<body>
-    <div class="container">
-        <nav>
-            <div class="logo">NTK1100_ARCHIVE</div>
-            <div class="nav-links">
-                <a href="index.html">~/HOME</a>
-                <a href="archive.html" class="active">~/ARCHIVE</a>
-                <a href="about.html">~/ABOUT</a>
-            </div>
-        </nav>
+---
+layout: default
+title: Archive
+---
 
-        <main>
-            <h2>> PROJECT_DATABASE_LOADED...</h2>
-            <p style="margin-bottom: 30px; font-style: italic; opacity: 0.7;">Click vào tên để truy cập tài liệu Notion.
-            </p>
+<h2 class="glitch-text">> PROJECT_DATABASE_LOADED...</h2>
+<p style="margin-bottom: 30px; font-style: italic; opacity: 0.7;">
+    Click vào tên để truy cập tài liệu Notion.
+</p>
 
-            <ul class="track-list">
-
-                <li class="track-item">
-                    <a href="LINK_NOTION_CUA_BAN_O_DAY" target="_blank" class="track-title">
-                        01. BGP Hijacking Research Report
-                    </a>
-                    <span class="track-tag">SECURITY</span>
-                </li>
-
-                <li class="track-item">
-                    <a href="LINK_NOTION_CUA_BAN_O_DAY" target="_blank" class="track-title">
-                        02. My Vim Config Setup
-                    </a>
-                    <span class="track-tag">LINUX</span>
-                </li>
-
-                <li class="track-item">
-                    <a href="LINK_NOTION_CUA_BAN_O_DAY" target="_blank" class="track-title">
-                        03. Hiphop Playlist 2024 Analysis
-                    </a>
-                    <span class="track-tag">MUSIC</span>
-                </li>
-
-            </ul>
-
-            <h2 class="glitch-text">> DATABASE_ACCESS_GRANTED</h2>
-            <p class="subtitle">Accessing Notion knowledge base...</p>
-
-            <ul class="track-list">
-                {% for project in site.data.projects %}
-                <li class="track-item">
-                    <a href="{{ project.url }}" target="_blank" class="track-title">
-                        {{ project.title }}
-                    </a>
-                    <div class="track-meta">
-                        <span class="track-date">{{ project.date }}</span>
-                        <span class="track-tag tag-{{ project.tag | downcase }}">{{ project.tag }}</span>
-                    </div>
-                </li>
-                {% endfor %}
-            </ul>
-        </main>
-    </div>
-</body>
+<ul class="track-list">
+    {% for project in site.data.projects %}
+    <li class="track-item">
+        <a href="{{ project.url }}" target="_blank" class="track-title">
+            {{ project.title }}
+        </a>
+        <div class="track-meta">
+            <span class="track-date" style="margin-right: 10px; opacity: 0.6; font-size: 0.8rem;">
+                {{ project.date }}
+            </span>
+            <span class="track-tag">{{ project.tag }}</span>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
