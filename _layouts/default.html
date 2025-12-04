@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }} | NTK1100</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <meta name="description" content="{{ site.description | default: 'Cyberpunk & Cybersecurity Playground' }}">
+    <title>{{ page.title }} | {{ site.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
     <link
         href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Orbitron:wght@500;900&display=swap"
         rel="stylesheet">

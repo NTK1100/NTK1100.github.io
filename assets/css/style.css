@@ -76,6 +76,7 @@ nav {
 .spotify-box iframe {
     opacity: 0.9;
     display: block;
+    border-radius: 12px;
     /* fix khoảng trắng thừa */
 }
 
@@ -113,4 +114,112 @@ nav {
     color: #000;
     padding: 2px 8px;
     border-radius: 4px;
+}
+
+.track-date {
+    margin-right: 10px;
+    opacity: 0.6;
+    font-size: 0.8rem;
+}
+
+/* --- Typography --- */
+.page-title {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.system-status {
+    color: var(--neon-green);
+}
+
+/* --- Buttons --- */
+.btn-archive {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: 2px solid var(--neon-green);
+    color: var(--neon-green);
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.btn-archive:hover {
+    background: rgba(10, 255, 10, 0.1);
+    box-shadow: 0 0 15px rgba(10, 255, 10, 0.3);
+}
+
+/* --- Glitch Text Effect --- */
+.glitch-text {
+    position: relative;
+    color: var(--neon-green);
+    font-size: 2rem;
+    text-shadow: 0 0 10px var(--neon-green);
+    animation: glitch 2s infinite;
+}
+
+@keyframes glitch {
+    0%, 100% {
+        text-shadow: 0 0 10px var(--neon-green);
+    }
+    25% {
+        text-shadow: -2px 0 var(--neon-purple), 2px 0 var(--neon-green);
+    }
+    50% {
+        text-shadow: 2px 0 var(--neon-purple), -2px 0 var(--neon-green);
+    }
+    75% {
+        text-shadow: 0 0 10px var(--neon-green);
+    }
+}
+
+/* --- Description Text --- */
+.about-description,
+.archive-description {
+    margin-bottom: 30px;
+    font-style: italic;
+    opacity: 0.7;
+}
+
+/* --- Footer --- */
+footer {
+    margin-top: 50px;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    text-align: center;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .nav-links a {
+        margin-left: 0;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .spotify-box iframe {
+        height: 280px;
+    }
 }
