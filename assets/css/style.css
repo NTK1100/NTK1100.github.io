@@ -21,13 +21,35 @@ body {
     background-image: linear-gradient(rgba(0, 255, 0, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0, 255, 0, 0.03) 1px, transparent 1px);
     background-size: 30px 30px;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Subtle scanline effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        transparent 50%,
+        rgba(0, 255, 0, 0.02) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.5;
 }
 
 /* --- Container chính --- */
 .container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 20px;
+    position: relative;
+    z-index: 2;
 }
 
 /* --- Menu điều hướng (Navigation) --- */
@@ -43,24 +65,58 @@ nav {
 .logo {
     font-family: 'Orbitron', sans-serif;
     font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+}
+
+.logo-text {
     color: var(--neon-green);
     text-shadow: 0 0 10px var(--neon-green);
-    font-weight: bold;
 }
 
-.nav-links a {
-    color: var(--text-color);
-    text-decoration: none;
-    margin-left: 20px;
-    font-size: 1.1rem;
-    transition: 0.3s;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
+.logo-suffix {
     color: var(--neon-purple);
     text-shadow: 0 0 8px var(--neon-purple);
-    border-bottom: 1px solid var(--neon-purple);
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 5px 10px;
+    transition: 0.3s;
+    position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--neon-purple);
+    text-shadow: 0 0 8px var(--neon-purple);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--neon-purple);
+    transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
 }
 
 /* --- Spotify Custom --- */
@@ -80,83 +136,228 @@ nav {
     /* fix khoảng trắng thừa */
 }
 
-/* --- Archive List (Style đĩa nhạc cho Notion) --- */
-.track-list {
-    list-style: none;
-    padding: 0;
+/* --- Project Items --- */
+.project-item {
+    padding: 20px;
+    margin-bottom: 20px;
+    background: rgba(20, 20, 20, 0.4);
+    border: 1px solid rgba(189, 0, 255, 0.2);
+    border-radius: 8px;
+    transition: all 0.3s;
 }
 
-.track-item {
+.project-item:hover {
+    background: rgba(20, 20, 20, 0.6);
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 20px rgba(189, 0, 255, 0.2);
+    transform: translateX(5px);
+}
+
+.project-header {
     display: flex;
     justify-content: space-between;
-    padding: 15px;
-    border-bottom: 1px dashed #333;
-    transition: 0.3s;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-.track-item:hover {
-    background: rgba(10, 255, 10, 0.1);
-    /* Hover màu xanh hacker */
-    padding-left: 25px;
-    /* Hiệu ứng trượt sang phải */
-    cursor: pointer;
-}
-
-.track-title {
+.project-title {
     font-weight: bold;
-    color: #fff;
+    color: var(--neon-green);
     text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s;
 }
 
-.track-tag {
-    font-size: 0.8rem;
+.project-title:hover {
+    color: var(--neon-purple);
+    text-shadow: 0 0 8px var(--neon-purple);
+}
+
+.project-tag {
+    font-size: 0.75rem;
     background: var(--neon-purple);
     color: #000;
-    padding: 2px 8px;
+    padding: 4px 10px;
     border-radius: 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.track-date {
-    margin-right: 10px;
-    opacity: 0.6;
-    font-size: 0.8rem;
+.project-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+.project-date {
+    color: var(--text-color);
+}
+
+.project-link {
+    color: var(--neon-green);
+    font-family: 'Fira Code', monospace;
 }
 
 /* --- Typography --- */
 .page-title {
-    font-size: 3rem;
-    margin-bottom: 10px;
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(90deg, var(--neon-green), var(--neon-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px rgba(10, 255, 10, 0.5);
+    letter-spacing: 2px;
 }
 
-.system-status {
+.tagline {
+    font-size: 1.2rem;
+    color: var(--neon-purple);
+    margin-bottom: 30px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/* --- Status Panel --- */
+.status-panel {
+    background: rgba(20, 20, 20, 0.6);
+    border: 1px solid var(--neon-green);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 40px;
+    box-shadow: 0 0 20px rgba(10, 255, 10, 0.1);
+}
+
+.status-line {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.95rem;
+}
+
+.status-line:last-child {
+    margin-bottom: 0;
+}
+
+.status-prefix {
     color: var(--neon-green);
+    font-weight: bold;
+    min-width: 100px;
+}
+
+.status-value {
+    color: var(--text-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- Intro Section --- */
+.intro-section {
+    margin-bottom: 40px;
+    line-height: 1.8;
+}
+
+.intro-text {
+    color: var(--text-color);
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+    opacity: 0.9;
+}
+
+.intro-text:last-child {
+    margin-bottom: 0;
+}
+
+/* --- Action Section --- */
+.action-section {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
 }
 
 /* --- Buttons --- */
-.btn-archive {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
+.btn-archive,
+.btn-about {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
     border: 2px solid var(--neon-green);
     color: var(--neon-green);
     text-decoration: none;
     font-weight: bold;
     text-transform: uppercase;
-    transition: 0.3s;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-about {
+    border-color: var(--neon-purple);
+    color: var(--neon-purple);
+}
+
+.btn-icon {
+    font-family: 'Fira Code', monospace;
+    transition: transform 0.3s;
 }
 
 .btn-archive:hover {
     background: rgba(10, 255, 10, 0.1);
-    box-shadow: 0 0 15px rgba(10, 255, 10, 0.3);
+    box-shadow: 0 0 20px rgba(10, 255, 10, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-archive:hover .btn-icon {
+    transform: translateX(5px);
+}
+
+.btn-about:hover {
+    background: rgba(189, 0, 255, 0.1);
+    box-shadow: 0 0 20px rgba(189, 0, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-about:hover .btn-icon {
+    transform: translateX(5px);
 }
 
 /* --- Glitch Text Effect --- */
 .glitch-text {
     position: relative;
     color: var(--neon-green);
-    font-size: 2rem;
+    font-size: 2.2rem;
+    font-family: 'Orbitron', sans-serif;
     text-shadow: 0 0 10px var(--neon-green);
-    animation: glitch 2s infinite;
+    animation: glitch 3s infinite;
+    margin-bottom: 10px;
+}
+
+.subtitle,
+.archive-subtitle {
+    color: var(--neon-purple);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    opacity: 0.8;
 }
 
 @keyframes glitch {
@@ -174,12 +375,107 @@ nav {
     }
 }
 
-/* --- Description Text --- */
-.about-description,
-.archive-description {
+/* --- About Page --- */
+.about-header {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.about-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.about-section {
+    margin-bottom: 40px;
+    padding: 25px;
+    background: rgba(20, 20, 20, 0.4);
+    border-left: 3px solid var(--neon-green);
+    border-radius: 4px;
+}
+
+.section-title {
+    color: var(--neon-green);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.about-text {
+    color: var(--text-color);
+    line-height: 1.8;
+    opacity: 0.9;
+    margin-bottom: 0;
+}
+
+.about-text strong {
+    color: var(--neon-purple);
+    font-weight: 600;
+}
+
+/* --- Skills Grid --- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.skill-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background: rgba(10, 255, 10, 0.05);
+    border: 1px solid rgba(10, 255, 10, 0.2);
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.skill-item:hover {
+    background: rgba(10, 255, 10, 0.1);
+    border-color: var(--neon-green);
+    transform: translateX(5px);
+}
+
+.skill-name {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.skill-level {
+    color: var(--neon-purple);
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- Archive Page --- */
+.archive-header {
     margin-bottom: 30px;
+    text-align: center;
+}
+
+.archive-description {
+    margin-bottom: 40px;
     font-style: italic;
-    opacity: 0.7;
+    opacity: 0.8;
+    text-align: center;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.projects-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.project-list {
+    list-style: none;
+    padding: 0;
 }
 
 /* --- Footer --- */
@@ -190,6 +486,20 @@ footer {
     text-align: center;
     border-top: 1px solid #333;
     padding-top: 20px;
+}
+
+/* --- Animations --- */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.status-prefix {
+    animation: pulse 2s infinite;
 }
 
 /* --- Responsive Design --- */
@@ -211,7 +521,7 @@ footer {
         width: 100%;
     }
 
-    .nav-links a {
+    .nav-link {
         margin-left: 0;
     }
 
@@ -219,7 +529,57 @@ footer {
         font-size: 2rem;
     }
 
+    .tagline {
+        font-size: 1rem;
+    }
+
+    .status-panel {
+        padding: 15px;
+    }
+
+    .status-line {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .status-prefix {
+        min-width: auto;
+    }
+
+    .action-section {
+        flex-direction: column;
+    }
+
+    .btn-archive,
+    .btn-about {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .project-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
     .spotify-box iframe {
         height: 280px;
+    }
+
+    .glitch-text {
+        font-size: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 1.1rem;
     }
 }

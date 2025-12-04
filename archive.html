@@ -3,23 +3,31 @@ layout: default
 title: Archive
 ---
 
-<h2 class="glitch-text">> PROJECT_DATABASE_LOADED...</h2>
+<div class="archive-header">
+    <h2 class="glitch-text">[PROJECT_DATABASE]</h2>
+    <p class="archive-subtitle">Research | Analysis | Documentation</p>
+</div>
+
 <p class="archive-description">
-    Click vào tên để truy cập tài liệu Notion.
+    Deep dives into malware, network protocols, cloud security, and more. 
+    Each project is a battle report from the front lines of cybersecurity.
 </p>
 
-<ul class="track-list">
-    {% for project in site.data.projects %}
-    <li class="track-item">
-        <a href="{{ project.url }}" target="_blank" class="track-title">
-            {{ project.title }}
-        </a>
-        <div class="track-meta">
-            <span class="track-date">
-                {{ project.date }}
-            </span>
-            <span class="track-tag">{{ project.tag }}</span>
-        </div>
-    </li>
-    {% endfor %}
-</ul>
+<div class="projects-container">
+    <ul class="project-list">
+        {% for project in site.data.projects %}
+        <li class="project-item">
+            <div class="project-header">
+                <a href="{{ project.url }}" target="_blank" class="project-title">
+                    {{ project.title }}
+                </a>
+                <span class="project-tag">{{ project.tag }}</span>
+            </div>
+            <div class="project-meta">
+                <span class="project-date">{{ project.date }}</span>
+                <span class="project-link">→ Access Docs</span>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
