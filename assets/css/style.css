@@ -3,20 +3,23 @@
 :root {
     --bg-color: #050505;
     --text-color: #e0e0e0;
-    --neon-green: #0aff0a; /* Màu Hacker */
-    --neon-purple: #bd00ff; /* Màu Hip-hop */
+    --neon-green: #0aff0a;
+    /* Màu Hacker */
+    --neon-purple: #bd00ff;
+    /* Màu Hip-hop */
     --glass-bg: rgba(20, 20, 20, 0.8);
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    font-family: 'Fira Code', monospace; /* Font code */
+    font-family: 'Fira Code', monospace;
+    /* Font code */
     margin: 0;
     padding: 0;
     /* Hiệu ứng nền lưới */
     background-image: linear-gradient(rgba(0, 255, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 0, 0.03) 1px, transparent 1px);
+        linear-gradient(90deg, rgba(0, 255, 0, 0.03) 1px, transparent 1px);
     background-size: 30px 30px;
 }
 
@@ -53,7 +56,8 @@ nav {
     transition: 0.3s;
 }
 
-.nav-links a:hover, .nav-links a.active {
+.nav-links a:hover,
+.nav-links a.active {
     color: var(--neon-purple);
     text-shadow: 0 0 8px var(--neon-purple);
     border-bottom: 1px solid var(--neon-purple);
@@ -67,11 +71,12 @@ nav {
     border-radius: 12px;
     overflow: hidden;
 }
+
 /* Đảo màu Spotify cho hợp dark mode */
 .spotify-box iframe {
-    filter: invert(90%) hue-rotate(180deg) contrast(1.2);
     opacity: 0.9;
-    display: block; /* fix khoảng trắng thừa */
+    display: block;
+    /* fix khoảng trắng thừa */
 }
 
 /* --- Archive List (Style đĩa nhạc cho Notion) --- */
@@ -89,8 +94,10 @@ nav {
 }
 
 .track-item:hover {
-    background: rgba(10, 255, 10, 0.1); /* Hover màu xanh hacker */
-    padding-left: 25px; /* Hiệu ứng trượt sang phải */
+    background: rgba(10, 255, 10, 0.1);
+    /* Hover màu xanh hacker */
+    padding-left: 25px;
+    /* Hiệu ứng trượt sang phải */
     cursor: pointer;
 }
 
